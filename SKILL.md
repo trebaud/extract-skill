@@ -47,7 +47,28 @@ This skill enables you to automatically grow your capabilities by parsing docume
 - **Description**: Ensure the description includes keywords that will help your discovery mechanism trigger the skill in the future.
 - **Paths**: Use relative paths for any referenced scripts (e.g., `scripts/my-script.py`).
 
-## Example Transformation
-**Source Document**: "A guide to using the `sips` command on macOS to resize images."
-**Action**: Create `image-resizing-mac`.
-**Resulting Description**: "Resizes and converts image files using the macOS `sips` utility. Use when the user needs to batch process images or change formats via terminal."
+## Example Transformations
+
+<example>
+**Source Document**: "My Claude conversation history JSON file containing patterns of how I solve problems."
+**Action**: Create `problem-solving-patterns`.
+**Resulting Description**: "Identifies and applies recurring problem-solving patterns from your conversation history. Use when you need to approach new challenges using your proven analytical methods."
+</example>
+
+<example>
+**Source Document**: "Tech blog tutorial on implementing OAuth 2.0 with Node.js and Express."
+**Action**: Create `oauth2-nodejs-implementation`.
+**Resulting Description**: "Implements OAuth 2.0 authentication flows in Node.js applications using Express. Use when you need to add secure user authentication and authorization to web APIs."
+</example>
+
+<example>
+**Source Document**: "PDF research paper on advanced machine learning model optimization techniques."
+**Action**: Create `ml-model-optimization`.
+**Resulting Description**: "Applies cutting-edge optimization techniques to improve machine learning model performance and efficiency. Use when you need to enhance model accuracy, reduce training time, or optimize resource usage."
+</example>
+
+<example>
+**Source Document**: "Linux command reference for ollama AI model management and deployment."
+**Action**: Create `ollama-linux-management`.
+**Resulting Description**: "Manages and deploys AI models using ollama on Linux systems. Use when you need to run, configure, or interact with local LLM models via command line."
+</example>
