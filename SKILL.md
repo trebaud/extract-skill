@@ -34,6 +34,7 @@ This skill enables you to automatically grow your capabilities by parsing docume
     - **YAML Frontmatter**: `name` and a concise `description` (max 1024 chars).
     - **Body**: Structured instructions, "When to use" section, and clear examples.
 - If the document provides specific scripts or complex templates, save them in `scripts/` or `assets/` subdirectories.
+- Follow the [Agent Skill Specification Standard](https://agentskills.io/specification) for consistent formatting and structure.
 
 ### 4. Updating/Merging a Skill
 - Read the existing `SKILL.md`.
