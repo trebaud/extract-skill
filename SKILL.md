@@ -15,12 +15,29 @@ This skill enables you to automatically grow your capabilities by parsing docume
 - When you are given a local file (PDF, Markdown, Text, JSON) describing a specific workflow.
 - When you want to formalize a discovered pattern into a permanent skill within a chat session
 
+## Information Filtering Principles
+
+**CRITICAL**: Extract only high-value, high-density information. Your goal is to create concise, actionable skills—not comprehensive documentation repositories.
+
+- **High-Value**: Information that directly enables a specific capability or solves a recurring problem
+- **High-Density**: Content with maximum actionable insight per word, avoiding fluff, marketing copy, or verbose explanations
+- **Essential Only**: Include only what's necessary to understand and execute the core capability
+- **Pattern-Focused**: Prioritize reusable patterns, workflows, and technical approaches over one-off examples
+
+**What to EXCLUDE**:
+- Marketing language, product descriptions, or promotional content
+- Basic explanations or introductory material
+- Repetitive examples that don't add new patterns
+- Historical context or background information
+- Anything that doesn't directly enable the core capability
+
 ## Workflow
 
 ### 1. Ingest Source Content
 - **For URLs**: Use `curl` or a browsing tool to fetch the full content of the page.
 - **For Files**: Read the file content directly.
 - **Analysis**: Identify the core capability, its name (kebab-case), and its primary use case.
+- **Filter**: Apply information filtering principles to extract only high-value, high-density content.
 
 ### 2. Context Comparison (Deduplication)
 - List the existing skills in your skills directory (typically, `.opencode/skills/`, `.claude/skills/`, or `~/.claude/skills/`).
@@ -31,8 +48,9 @@ This skill enables you to automatically grow your capabilities by parsing docume
 ### 3. Creating a New Skill
 - Create a new directory matching the skill name.
 - Generate a `SKILL.md` with:
-    - **YAML Frontmatter**: `name` and a concise `description` (max 1024 chars).
-    - **Body**: Structured instructions, "When to use" section, and clear examples.
+    - **YAML Frontmatter**: `name` and a concise `description` (max 1024 chars) focused on the core capability.
+    - **Body**: Highly condensed instructions, "When to use" section, and essential examples only.
+- **Content Density**: Ensure every sentence provides actionable value. Remove any explanatory fluff or verbose descriptions.
 - If the document provides specific scripts or complex templates, save them in `scripts/` or `assets/` subdirectories.
 - Follow the [Agent Skill Specification Standard](https://agentskills.io/specification) for consistent formatting and structure.
 
@@ -42,7 +60,15 @@ This skill enables you to automatically grow your capabilities by parsing docume
 - Update the `description` in the frontmatter if the skill's scope has expanded significantly.
 - Ensure no duplicate frontmatter sections are created.
 
-## Standards Adherence
+## Quality Standards
+
+### Information Density Requirements
+- **Maximum Value per Word**: Every sentence must contain actionable insight or essential pattern
+- **No Redundancy**: Eliminate repetitive explanations or overlapping examples
+- **Conciseness**: Aim for 50-70% reduction from source material while preserving 100% of essential capability
+- **Action-Oriented**: Focus on "how to execute" rather than "what it is"
+
+### Standards Adherence
 - **Naming**: Use `lowercase-hyphenated-names`. Max 64 characters.
 - **Description**: Ensure the description includes keywords that will help your discovery mechanism trigger the skill in the future.
 - **Paths**: Use relative paths for any referenced scripts (e.g., `scripts/my-script.py`).
@@ -50,15 +76,17 @@ This skill enables you to automatically grow your capabilities by parsing docume
 ## Example Transformations
 
 <example>
-**Source Document**: "My Claude conversation history JSON file containing patterns of how I solve problems."
-**Action**: Create `problem-solving-patterns`.
-**Resulting Description**: "Identifies and applies recurring problem-solving patterns from your conversation history. Use when you need to approach new challenges using your proven analytical methods."
+**Source Document**: "5,000-word blog post about debugging Node.js applications with extensive background, personal anecdotes, and basic explanations."
+**Action**: Extract only the debugging patterns and create `nodejs-debugging-patterns`.
+**Resulting Description**: "Applies systematic debugging patterns for Node.js applications. Use when you need to identify and resolve performance issues, memory leaks, or runtime errors efficiently."
+**Note**: Reduced from 5,000 words to ~200 words while preserving 100% of actionable debugging techniques.
 </example>
 
 <example>
-**Source Document**: "Tech blog tutorial on implementing OAuth 2.0 with Node.js and Express."
-**Action**: Create `oauth2-nodejs-implementation`.
+**Source Document**: "3,000-word OAuth 2.0 tutorial including history of authentication, basic web concepts, and marketing language about security benefits."
+**Action**: Extract only the implementation patterns and create `oauth2-nodejs-implementation`.
 **Resulting Description**: "Implements OAuth 2.0 authentication flows in Node.js applications using Express. Use when you need to add secure user authentication and authorization to web APIs."
+**Note**: Filtered out 1,800 words of non-essential content, keeping only code patterns and flow logic.
 </example>
 
 <example>
