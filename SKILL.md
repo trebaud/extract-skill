@@ -75,7 +75,7 @@ Before extracting, understand concrete examples of how the skill will be used:
 
 ### Step 3: Context Comparison (Deduplication)
 
-- List the existing skills in your skills directory (typically, `.opencode/skills/`, `.ai/skills/`, or `~/.ai/skills/`).
+- List the existing skills in your skills directory (typically, `.opencode/skills/`, `.claude/skills/`, or `~/.claude/skills/`).
 - Compare the new capability against existing ones:
     - **Orthogonal**: If the functionality is unrelated to any existing skill, proceed to **Create**.
     - **Overlapping**: If a skill already exists for this domain, proceed to **Update**.
