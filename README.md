@@ -14,28 +14,33 @@ A meta Agent Skill that enables automated capability growth by extracting specia
 
 ## Key Features
 
+- **Context Window Optimization**: Prioritizes essential information with maximum value per word
+- **Progressive Disclosure**: Three-level loading system (metadata → SKILL.md → bundled resources) for efficient context management
 - **Information Filtering**: Extracts only high-value, high-density information (50-70% reduction from source)
 - **Deduplication**: Compares against existing skills to avoid overlap
+- **Degrees of Freedom**: Matches specificity to task variability (high/medium/low freedom patterns)
 - **Standardization**: Follows Agent Skill Specification for consistent formatting
+- **Structured Resources**: Strategic use of scripts, references, and assets based on use case requirements
 - **Quality Control**: Ensures maximum actionable insight per word with no redundancy
-- **Proactive Script Creation**: Automatically creates supporting scripts, templates, and assets to enhance skill usability
-- **Automation-First**: Identifies workflows that benefit from automation and creates executable solutions
 
 ## Workflow
 
-1. **Ingest**: Fetch content from URLs or read local files
-2. **Filter**: Apply information filtering principles to extract essential patterns
-3. **Compare**: Check against existing skills for deduplication
-4. **Create/Update**: Generate new skills or merge with existing ones
-5. **Automate**: Create supporting scripts, templates, and assets for enhanced usability
+1. **Understand**: Analyze concrete examples and define scope with user input
+2. **Ingest**: Fetch content from URLs or read local files
+3. **Filter**: Apply information filtering principles to extract essential patterns
+4. **Compare**: Check against existing skills for deduplication
+5. **Plan**: Identify necessary scripts, references, and assets
+6. **Create**: Generate new skills with progressive disclosure structure
+7. **Resource Strategy**: Implement appropriate bundled resources based on use case
 
 ## Quality Standards
 
 - `lowercase-hyphenated-names` (max 64 characters)
-- Concise descriptions with discovery keywords
-- Relative paths for referenced scripts
+- Context-optimized descriptions with discovery keywords
+- Progressive disclosure structure (metadata → SKILL.md → references)
+- Degrees of freedom matching (high/medium/low specificity)
+- Strategic resource allocation (scripts for reliability, references for knowledge, assets for output)
+- No extraneous documentation files
 - Action-oriented instructions focused on execution
-- Proactive creation of automation scripts and reference assets
-- One-command solutions for complex workflows
 
-Transforms verbose documentation into precise, executable capabilities with automated workflows while preserving 100% of essential techniques.
+Transforms verbose documentation into precise, context-efficient capabilities with appropriate automation while preserving 100% of essential techniques.
