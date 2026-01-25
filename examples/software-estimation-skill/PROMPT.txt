@@ -1,0 +1,1 @@
+use extract-skill on this blog post https://www.seangoedecke.com/how-i-estimate-work/
