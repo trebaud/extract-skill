@@ -18,6 +18,8 @@ A meta Agent Skill that enables automated capability growth by extracting specia
 - **Deduplication**: Compares against existing skills to avoid overlap
 - **Standardization**: Follows Agent Skill Specification for consistent formatting
 - **Quality Control**: Ensures maximum actionable insight per word with no redundancy
+- **Proactive Script Creation**: Automatically creates supporting scripts, templates, and assets to enhance skill usability
+- **Automation-First**: Identifies workflows that benefit from automation and creates executable solutions
 
 ## Workflow
 
@@ -25,6 +27,7 @@ A meta Agent Skill that enables automated capability growth by extracting specia
 2. **Filter**: Apply information filtering principles to extract essential patterns
 3. **Compare**: Check against existing skills for deduplication
 4. **Create/Update**: Generate new skills or merge with existing ones
+5. **Automate**: Create supporting scripts, templates, and assets for enhanced usability
 
 ## Quality Standards
 
@@ -32,5 +35,7 @@ A meta Agent Skill that enables automated capability growth by extracting specia
 - Concise descriptions with discovery keywords
 - Relative paths for referenced scripts
 - Action-oriented instructions focused on execution
+- Proactive creation of automation scripts and reference assets
+- One-command solutions for complex workflows
 
-Transforms verbose documentation into precise, executable capabilities while preserving 100% of essential techniques.
+Transforms verbose documentation into precise, executable capabilities with automated workflows while preserving 100% of essential techniques.

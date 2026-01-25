@@ -51,7 +51,10 @@ This skill enables you to automatically grow your capabilities by parsing docume
     - **YAML Frontmatter**: `name` and a concise `description` (max 1024 chars) focused on the core capability.
     - **Body**: Highly condensed instructions, "When to use" section, and essential examples only.
 - **Content Density**: Ensure every sentence provides actionable value. Remove any explanatory fluff or verbose descriptions.
-- If the document provides specific scripts or complex templates, save them in `scripts/` or `assets/` subdirectories.
+- **Proactive Script Creation**: Automatically create supporting scripts and references when they enhance usability:
+    - **Scripts**: Create executable scripts for complex multi-step workflows, boilerplate generators, or automation tasks
+    - **Assets**: Store configuration files, templates, reference data, or lookup tables
+    - **Documentation**: Add companion READMEs for complex integrations or setup instructions
 - Follow the [Agent Skill Specification Standard](https://agentskills.io/specification) for consistent formatting and structure.
 
 ### 4. Updating/Merging a Skill
@@ -72,6 +75,27 @@ This skill enables you to automatically grow your capabilities by parsing docume
 - **Naming**: Use `lowercase-hyphenated-names`. Max 64 characters.
 - **Description**: Ensure the description includes keywords that will help your discovery mechanism trigger the skill in the future.
 - **Paths**: Use relative paths for any referenced scripts (e.g., `scripts/my-script.py`).
+- **Script Integration**: Reference scripts from SKILL.md with clear usage instructions and prerequisites.
+
+## Proactive Best Practices
+
+### Script Discovery
+- Always scan source documentation for repetitive command sequences
+- Look for configuration patterns that can be templated
+- Identify multi-step setup procedures that benefit from automation
+- Extract common workflows into reusable scripts
+
+### User Experience Focus
+- Scripts should reduce cognitive load, not increase complexity
+- Provide one-command solutions for common tasks
+- Include clear error messages and next steps
+- Design scripts to be discoverable and self-documenting
+
+### Maintenance Considerations
+- Keep scripts focused on single responsibilities
+- Version control scripts alongside skill updates
+- Document dependencies and prerequisites clearly
+- Design scripts to be robust across different environments
 
 ## Example Transformations
 
@@ -87,6 +111,7 @@ This skill enables you to automatically grow your capabilities by parsing docume
 **Action**: Extract only the implementation patterns and create `oauth2-nodejs-implementation`.
 **Resulting Description**: "Implements OAuth 2.0 authentication flows in Node.js applications using Express. Use when you need to add secure user authentication and authorization to web APIs."
 **Note**: Filtered out 1,800 words of non-essential content, keeping only code patterns and flow logic.
+**Enhanced with Scripts**: Added `scripts/generate-oauth-setup.js` for boilerplate middleware creation, `scripts/keygen.sh` for secure key generation, and `assets/providers/` with templates for Google, GitHub, and custom OAuth providers.
 </example>
 
 <example>
@@ -99,4 +124,5 @@ This skill enables you to automatically grow your capabilities by parsing docume
 **Source Document**: "Linux command reference for ollama AI model management and deployment."
 **Action**: Create `ollama-linux-management`.
 **Resulting Description**: "Manages and deploys AI models using ollama on Linux systems. Use when you need to run, configure, or interact with local LLM models via command line."
+**Enhanced with Scripts**: Added `scripts/quick-setup.sh` for automated environment preparation, `scripts/model-monitor.sh` for resource monitoring, and `assets/config-templates/` with pre-built Modelfile templates for common use cases.
 </example>
