@@ -98,6 +98,27 @@ Analyze each concrete example to identify what resources would be helpful:
 
 Follow the progressive disclosure patterns and bundled resources strategy outlined above.
 
+### Step 6: Validate and Iterate
+
+After creating the skill structure and content, run the validation script:
+
+```bash
+scripts/validate-skill ./skill-name
+```
+
+**Validation Response Protocol**:
+- **PASS**: Skill is ready for use
+- **WARNINGS**: Review warnings but skill can still be used
+- **ERRORS**: Fix all errors before considering the skill complete
+
+**Common Error Fixes**:
+- **Name mismatch**: Ensure directory name matches frontmatter `name` field
+- **Missing frontmatter**: Add YAML frontmatter with required `name` and `description`
+- **Broken references**: Create referenced files or remove broken links
+- **Format issues**: Fix naming conventions, file permissions, or content structure
+
+**Iterate**: Run validation after each fix until all errors are resolved.
+
 ### 3. Creating a New Skill
 
 #### Skill Anatomy
@@ -299,6 +320,10 @@ https://api.example.com/docs/authentication
 ## Validation Commands
 After creating a skill, run validation:
 ```bash
+# Using the local validation script (recommended)
+scripts/validate-skill ./skill-name
+
+# Alternative validation command
 skills-ref validate ./skill-name
 ```
 
