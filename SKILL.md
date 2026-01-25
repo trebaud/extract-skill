@@ -121,6 +121,10 @@ Skills use a three-level loading system to manage context efficiently:
 
 **Keep SKILL.md body to essentials only.** Split content into separate files when approaching limits. Always reference these files from SKILL.md and clearly describe when to read them.
 
+**Keep file references one level deep from SKILL.md.** Avoid deeply nested reference chains.
+
+**SKILL.md should be under 500 lines** total.
+
 ##### Progressive Disclosure Patterns
 
 **Pattern 1: High-level guide with references**
@@ -182,10 +186,11 @@ Simple filtering and transformation:
 - **Action-Oriented**: Focus on "how to execute" rather than "what it is"
 
 ### Standards Adherence
-- **Naming**: Use `lowercase-hyphenated-names`. Max 64 characters.
-- **Description**: Ensure the description includes keywords that will help your discovery mechanism trigger the skill in the future.
+- **Naming**: Use `lowercase-hyphenated-names`. Max 64 characters. Must match directory name.
+- **Description**: Ensure the description includes keywords that will help your discovery mechanism trigger the skill in the future. Max 1024 characters.
 - **Paths**: Use relative paths for any referenced scripts (e.g., `scripts/my-script.py`).
 - **Script Integration**: Reference scripts from SKILL.md with clear usage instructions and prerequisites.
+- **Directory matching**: Skill directory name must exactly match the `name` field in frontmatter.
 
 ## Bundled Resources Strategy
 
@@ -263,6 +268,39 @@ The skill should only contain essential information that directly supports its f
 - Version control scripts alongside skill updates
 - Document dependencies and prerequisites clearly
 - Design scripts to be robust across different environments
+
+## Examples and Edge Cases
+
+### Input/Output Examples
+**Example Input**: URL to API documentation
+```
+https://api.example.com/docs/authentication
+```
+**Expected Output**: 
+- Skill directory: `api-authentication/`
+- SKILL.md with frontmatter and condensed OAuth implementation guide
+- scripts/generate-auth-middleware.js (if repetitive patterns found)
+
+**Example Input**: Local PDF with workflow guide
+```
+./data-workflow-guide.pdf
+```
+**Expected Output**:
+- Skill directory: `data-processing-workflow/`
+- SKILL.md with ETL patterns and error handling
+- references/schemas.md (if multiple data formats)
+
+### Common Edge Cases
+- **Multiple capabilities**: When source contains distinct functionalities, create separate skills or use domain-specific organization
+- **Incomplete documentation**: Fill gaps with best practices, clearly mark assumptions
+- **Outdated information**: Extract timeless patterns, note version-specific details
+- **Mixed media content**: Focus on textual instructions, ignore video/image references
+
+## Validation Commands
+After creating a skill, run validation:
+```bash
+skills-ref validate ./skill-name
+```
 
 ## Example Transformations
 

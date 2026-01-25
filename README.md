@@ -4,7 +4,7 @@ A meta Agent Skill that enables automated capability growth by extracting specia
 
 ## Overview
 
-`extract-skill` follows the [Agent Skill Specification](https://agentskills.io/specification) to parse technical documents, README files, API guides, and tutorials into concise, reusable skills. It applies aggressive information filtering to extract only high-value, information dense content.
+`extract-skill` follows the [Agent Skills specification](https://agentskills.io/specification) and is inspired by Anthropic's [skill creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) to parse technical documents, README files, API guides, and tutorials into concise, reusable skills. It applies aggressive information filtering to extract only high-value, information dense content.
 
 ## When to Use
 
