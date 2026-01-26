@@ -106,189 +106,72 @@ After creating the skill structure and content, run the validation script:
 scripts/validate-skill ./skill-name
 ```
 
-**Validation Response Protocol**:
-- **PASS**: Skill is ready for use
-- **WARNINGS**: Review warnings but skill can still be used
-- **ERRORS**: Fix all errors before considering the skill complete
-
-**Common Error Fixes**:
-- **Name mismatch**: Ensure directory name matches frontmatter `name` field
-- **Missing frontmatter**: Add YAML frontmatter with required `name` and `description`
-- **Broken references**: Create referenced files or remove broken links
-- **Format issues**: Fix naming conventions, file permissions, or content structure
-
-**Iterate**: Run validation after each fix until all errors are resolved.
+For detailed validation procedures and error resolution guidance, see [Skill Creation Standards](references/skill-creation-standards.md#validation-commands).
 
 ### 3. Creating a New Skill
 
-#### Skill Anatomy
-```
-skill-name/
-├── SKILL.md (required)
-│   ├── YAML frontmatter metadata (name, description)
-│   └── Markdown instructions (loaded after triggering)
-└── Bundled Resources (optional)
-    ├── scripts/          - Executable code for deterministic reliability
-    ├── references/       - Documentation loaded as needed into context
-    └── assets/           - Files used in output (templates, icons, etc.)
-```
+For comprehensive standards and best practices on creating new skills, see [Skill Creation Standards](references/skill-creation-standards.md).
+
+#### Quick Reference
+- **Structure**: SKILL.md (required) + optional bundled resources (scripts/, references/, assets/)
+- **Naming**: `lowercase-hyphenated-names`, max 64 chars, must match directory
+- **Description**: Max 1024 chars with discovery keywords
+- **Progressive Disclosure**: Metadata → SKILL.md (<500 lines) → bundled resources
+- **Content Focus**: High-value, high-density information only
 
 #### Progressive Disclosure Design
-Skills use a three-level loading system to manage context efficiently:
+Skills use a three-level loading system:
+1. **Metadata** (name + description) - Always in context (~100 words)
+2. **SKILL.md body** - When skill triggers (<5k words, <500 lines)
+3. **Bundled resources** - As needed (unlimited, scripts execute without context)
 
-1. **Metadata (name + description)** - Always in context (~100 words)
-2. **SKILL.md body** - When skill triggers (<5k words, ideally <500 lines)
-3. **Bundled resources** - As needed by the AI agent (unlimited, scripts execute without context loading)
-
-**Keep SKILL.md body to essentials only.** Split content into separate files when approaching limits. Always reference these files from SKILL.md and clearly describe when to read them.
-
-**Keep file references one level deep from SKILL.md.** Avoid deeply nested reference chains.
-
-**SKILL.md should be under 500 lines** total.
-
-##### Progressive Disclosure Patterns
-
-**Pattern 1: High-level guide with references**
-```markdown
-# API Integration
-
-## Quick start
-Basic authentication flow:
-[code example]
-
-## Advanced features
-- **OAuth flows**: See [OAUTH.md](OAUTH.md) for complete guide
-- **Rate limiting**: See [RATE_LIMITING.md](RATE_LIMITING.md) for strategies
-- **Error handling**: See [ERRORS.md](ERRORS.md) for patterns
-```
-
-**Pattern 2: Domain-specific organization**
-```
-skill-name/
-├── SKILL.md (overview and navigation)
-└── references/
-    ├── finance.md (revenue, billing metrics)
-    ├── sales.md (opportunities, pipeline)
-    └── product.md (API usage, features)
-```
-
-**Pattern 3: Conditional details**
-Show basic content, link to advanced:
-```markdown
-# Data Processing
-
-## Basic operations
-Simple filtering and transformation:
-[code example]
-
-**For advanced analytics**: See [ANALYTICS.md](ANALYTICS.md)
-**For real-time processing**: See [STREAMING.md](STREAMING.md)
-```
-
-#### Content Creation Guidelines
-- **YAML Frontmatter**: `name` and concise `description` (max 1024 chars) focused on when to use the skill
-- **Body**: Highly condensed instructions and essential examples only
-- **Content Density**: Every sentence must provide actionable value
-- **No redundancy**: Information should live in either SKILL.md or reference files, never both
-- **Proactive Script Creation**: Automatically create supporting scripts and references when they enhance usability
+#### Degrees of Freedom Framework
+- **High freedom**: Text instructions for flexible, context-dependent tasks
+- **Medium freedom**: Pseudocode/scripts with parameters for configurable patterns  
+- **Low freedom**: Specific scripts for fragile, consistency-critical operations
 
 ### 4. Updating/Merging a Skill
-- Read the existing `SKILL.md`.
-- Append the new instructions or examples to the Markdown body.
-- Update the `description` in the frontmatter if the skill's scope has expanded significantly.
-- Ensure no duplicate frontmatter sections are created.
+- Read the existing `SKILL.md`
+- Append new instructions or examples to the body
+- Update the `description` if scope expanded significantly
+- Ensure no duplicate frontmatter sections are created
 
 ## Quality Standards
 
-### Information Density Requirements
-- **Maximum Value per Word**: Every sentence must contain actionable insight or essential pattern
-- **No Redundancy**: Eliminate repetitive explanations or overlapping examples
-- **Conciseness**: Aim for 50-70% reduction from source material while preserving 100% of essential capability
-- **Action-Oriented**: Focus on "how to execute" rather than "what it is"
+See [Skill Creation Standards](references/skill-creation-standards.md#quality-validation) for comprehensive validation criteria.
 
-### Standards Adherence
-- **Naming**: Use `lowercase-hyphenated-names`. Max 64 characters. Must match directory name.
-- **Description**: Ensure the description includes keywords that will help your discovery mechanism trigger the skill in the future. Max 1024 characters.
-- **Paths**: Use relative paths for any referenced scripts (e.g., `scripts/my-script.py`).
-- **Script Integration**: Reference scripts from SKILL.md with clear usage instructions and prerequisites.
-- **Directory matching**: Skill directory name must exactly match the `name` field in frontmatter.
+### Key Requirements
+- **Information Density**: Every sentence must provide actionable value
+- **Naming**: `lowercase-hyphenated-names`, max 64 characters, directory match required
+- **Description**: Max 1024 characters with discovery keywords
+- **Paths**: Use relative paths (e.g., `scripts/my-script.py`)
+- **SKILL.md**: Under 500 lines total, include only essential information
 
 ## Bundled Resources Strategy
 
-### Scripts (`scripts/`)
+See [Skill Creation Standards](references/skill-creation-standards.md#bundled-resources-strategy) for detailed resource guidelines.
 
-Executable code for tasks requiring deterministic reliability or repeated execution.
-
-**When to include scripts**:
-- When the same code is being rewritten repeatedly
-- When deterministic reliability is needed
-- For complex multi-step workflows requiring repeated command sequences
-- For code generation patterns that create boilerplate or templates
-- For operations that are fragile and error-prone (low freedom)
-
-**Examples**: `scripts/rotate_pdf.py`, `scripts/setup.sh`, `scripts/generate-config.py`
-
-**Benefits**: Token efficient, deterministic, may be executed without loading into context
-
-### References (`references/`)
-
-Documentation and reference material loaded as needed into context to inform the AI agent's process.
-
-**When to include references**:
-- For documentation that the AI agent should reference while working
-- Database schemas, API documentation, domain knowledge
-- Company policies, detailed workflow guides
-- When supporting multiple domains, frameworks, or variants
-
-**Examples**: `references/finance.md`, `references/api_docs.md`, `references/schemas.md`
-
-**Benefits**: Keeps SKILL.md lean, loaded only when needed
-**Best practice**: If files are large (>10k words), include grep search patterns in SKILL.md
-**Avoid duplication**: Information should live in either SKILL.md or references files, never both
-
-### Assets (`assets/`)
-
-Files not intended to be loaded into context, but used within the output the AI agent produces.
-
-**When to include assets**:
-- When the skill needs files that will be used in the final output
-- Templates, images, icons, boilerplate code, fonts, sample documents
-- Configuration files that get copied or modified
-
-**Examples**: `assets/logo.png`, `assets/slides.pptx`, `assets/frontend-template/`
-
-**Benefits**: Separates output resources from documentation, enables use without context loading
+### Overview
+- **Scripts/**: Executable code for deterministic reliability and repeated execution
+- **References/**: Documentation loaded as needed (APIs, schemas, domain knowledge)
+- **Assets/**: Files used in output (templates, images, boilerplate)
 
 ### What NOT to Include
+Do NOT create extraneous documentation files (README.md, INSTALLATION_GUIDE.md, etc.). The skill should contain only essential information that directly supports its functionality.
 
-Do NOT create extraneous documentation or auxiliary files:
-- README.md
-- INSTALLATION_GUIDE.md  
-- QUICK_REFERENCE.md
-- CHANGELOG.md
-- etc.
 
-The skill should only contain essential information that directly supports its functionality. Creating additional documentation files adds clutter and confusion.
+## Validation Commands
 
-## Proactive Best Practices
+After creating a skill, run validation:
+```bash
+# Using the local validation script (recommended)
+scripts/validate-skill ./skill-name
 
-### Script Discovery
-- Always scan source documentation for repetitive command sequences
-- Look for configuration patterns that can be templated
-- Identify multi-step setup procedures that benefit from automation
-- Extract common workflows into reusable scripts
+# Alternative validation command
+skills-ref validate ./skill-name
+```
 
-### User Experience Focus
-- Scripts should reduce cognitive load, not increase complexity
-- Provide one-command solutions for common tasks
-- Include clear error messages and next steps
-- Design scripts to be discoverable and self-documenting
-
-### Maintenance Considerations
-- Keep scripts focused on single responsibilities
-- Version control scripts alongside skill updates
-- Document dependencies and prerequisites clearly
-- Design scripts to be robust across different environments
+For comprehensive validation procedures and troubleshooting guidance, see [Skill Creation Standards](references/skill-creation-standards.md#validation-commands).
 
 ## Examples and Edge Cases
 
@@ -310,24 +193,6 @@ https://api.example.com/docs/authentication
 - Skill directory: `data-processing-workflow/`
 - SKILL.md with ETL patterns and error handling
 - references/schemas.md (if multiple data formats)
-
-### Common Edge Cases
-- **Multiple capabilities**: When source contains distinct functionalities, create separate skills or use domain-specific organization
-- **Incomplete documentation**: Fill gaps with best practices, clearly mark assumptions
-- **Outdated information**: Extract timeless patterns, note version-specific details
-- **Mixed media content**: Focus on textual instructions, ignore video/image references
-
-## Validation Commands
-After creating a skill, run validation:
-```bash
-# Using the local validation script (recommended)
-scripts/validate-skill ./skill-name
-
-# Alternative validation command
-skills-ref validate ./skill-name
-```
-
-## Example Transformations
 
 <example>
 **Source Document**: "5,000-word blog post about debugging Node.js applications with extensive background, personal anecdotes, and basic explanations."
@@ -356,3 +221,9 @@ skills-ref validate ./skill-name
 **Resulting Description**: "Manages and deploys AI models using ollama on Linux systems. Use when you need to run, configure, or interact with local LLM models via command line."
 **Enhanced with Scripts**: Added `scripts/quick-setup.sh` for automated environment preparation, `scripts/model-monitor.sh` for resource monitoring, and `assets/config-templates/` with pre-built Modelfile templates for common use cases.
 </example>
+
+### Common Edge Cases
+- **Multiple capabilities**: When source contains distinct functionalities, create separate skills or use domain-specific organization
+- **Incomplete documentation**: Fill gaps with best practices, clearly mark assumptions
+- **Outdated information**: Extract timeless patterns, note version-specific details
+- **Mixed media content**: Focus on textual instructions, ignore video/image references
