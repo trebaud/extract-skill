@@ -1,6 +1,6 @@
 # Extract Skill
 
-Transforms documentation into Agent Skills using epistemic distillation to extract only essential patterns. Follows the [Agent Skills specification](https://agentskills.io/specification).
+Transforms documentation/blog posts/tutorials into Agent Skills using epistemic distillation to extract only essential patterns. Follows the [Agent Skills specification](https://agentskills.io/specification).
 
 ## Use Cases
 - Convert URLs/tutorials into reusable skills
