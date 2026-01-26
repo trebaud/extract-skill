@@ -82,6 +82,8 @@ Analyze each concrete example to identify what resources would be helpful:
 
 Follow the progressive disclosure patterns and bundled resources strategy outlined above.
 
+**Reference Standards**: Before implementation, read [references/skill-creation-standards.md](references/skill-creation-standards.md) for structural requirements and [references/distillation-heuristics.md](references/distillation-heuristics.md) for content filtering principles.
+
 ### Step 6: Validate and Iterate
 
 After creating the skill structure and content, run the validation script:
@@ -126,6 +128,8 @@ See [Skill Creation Standards](references/skill-creation-standards.md#quality-va
 
 ### Key Requirements
 - **Information Density**: Apply epistemic distillation heuristics from [references/distillation-heuristics.md](references/distillation-heuristics.md)
+- **Reference Analysis**: MUST read and analyze all reference files before extraction
+- **Standards Compliance**: Follow structural requirements from [references/skill-creation-standards.md](references/skill-creation-standards.md)
 - **Naming**: `lowercase-hyphenated-names`, max 64 characters, directory match required
 - **Description**: Max 1024 characters with discovery keywords
 - **Paths**: Use relative paths (e.g., `scripts/my-script.py`)
