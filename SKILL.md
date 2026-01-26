@@ -18,25 +18,9 @@ This skill enables you to automatically grow your capabilities by parsing docume
 
 ## Information Filtering Principles
 
-**CRITICAL**: Extract only high-value, high-density information. The context window is a shared resource—every word must justify its token cost.
+**CRITICAL**: Extract only high-value, high-density information using the epistemic distillation heuristics defined in [references/distillation-heuristics.md](references/distillation-heuristics.md).
 
-- **High-Value**: Information that directly enables a specific capability or solves a recurring problem
-- **High-Density**: Content with maximum actionable insight per word, avoiding fluff, marketing copy, or verbose explanations
-- **Essential Only**: Include only what's necessary to understand and execute the core capability
-- **Pattern-Focused**: Prioritize reusable patterns, workflows, and technical approaches over one-off examples
-
-**What to EXCLUDE**:
-- Marketing language, product descriptions, or promotional content
-- Basic explanations or introductory material
-- Repetitive examples that don't add new patterns
-- Historical context or background information
-- Anything that doesn't directly enable the core capability
-
-### Context Window Optimization
-
-**Default assumption: AI agents are already very smart.** Only add context agents don't already have. Challenge each piece of information: "Does the agent really need this explanation?" and "Does this paragraph justify its token cost?"
-
-Prefer concise examples over verbose explanations. The skill shares context with system prompts, conversation history, and other skills—efficiency is non-negotiable.
+The context window is a shared resource—every word must justify its token cost. Apply information theory, linguistic economy, and teleological validation to filter noise and maximize signal.
 
 ### Set Appropriate Degrees of Freedom
 
@@ -71,7 +55,7 @@ Before extracting, understand concrete examples of how the skill will be used:
 - **For URLs**: Use `curl` or a browsing tool to fetch the full content of the page.
 - **For Files**: Read the file content directly.
 - **Analysis**: Identify the core capability, its name (kebab-case), and its primary use case.
-- **Filter**: Apply information filtering principles to extract only high-value, high-density content.
+- **Filter**: Apply epistemic distillation heuristics from [references/distillation-heuristics.md](references/distillation-heuristics.md) to extract only high-value, high-density content.
 
 ### Step 3: Context Comparison (Deduplication)
 
@@ -141,7 +125,7 @@ Skills use a three-level loading system:
 See [Skill Creation Standards](references/skill-creation-standards.md#quality-validation) for comprehensive validation criteria.
 
 ### Key Requirements
-- **Information Density**: Every sentence must provide actionable value
+- **Information Density**: Apply epistemic distillation heuristics from [references/distillation-heuristics.md](references/distillation-heuristics.md)
 - **Naming**: `lowercase-hyphenated-names`, max 64 characters, directory match required
 - **Description**: Max 1024 characters with discovery keywords
 - **Paths**: Use relative paths (e.g., `scripts/my-script.py`)
