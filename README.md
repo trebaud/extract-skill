@@ -21,6 +21,9 @@ Transforms documentation into Agent Skills using epistemic distillation to extra
 4. Generate skill with progressive disclosure
 5. Validate with `scripts/validate-skill ./skill-name`
 
+## Examples
+Skills created using extract-skill can be found in the `examples/` directory.
+
 ## Quality Standards
 - Names: `lowercase-hyphenated` (≤64 chars)
 - Context-optimized descriptions
