@@ -20,8 +20,6 @@ This skill enables you to automatically grow your capabilities by parsing docume
 
 **CRITICAL**: Extract only high-value, high-density information using the epistemic distillation heuristics defined in [references/distillation-heuristics.md](references/distillation-heuristics.md).
 
-The context window is a shared resource—every word must justify its token cost. Apply information theory, linguistic economy, and teleological validation to filter noise and maximize signal.
-
 ### Set Appropriate Degrees of Freedom
 
 Match the level of specificity to the task's fragility and variability:
@@ -80,41 +78,18 @@ Analyze each concrete example to identify what resources would be helpful:
 
 ### Step 5: Create and Implement
 
-Follow the progressive disclosure patterns and bundled resources strategy outlined above.
-
 **Reference Standards**: Before implementation, read [references/skill-creation-standards.md](references/skill-creation-standards.md) for structural requirements and [references/distillation-heuristics.md](references/distillation-heuristics.md) for content filtering principles.
 
 ### Step 6: Validate and Iterate
 
 After creating the skill structure and content, run the validation script:
-
 ```bash
 scripts/validate-skill ./skill-name
 ```
 
-For detailed validation procedures and error resolution guidance, see [Skill Creation Standards](references/skill-creation-standards.md#validation-commands).
-
 ### 3. Creating a New Skill
 
 For comprehensive standards and best practices on creating new skills, see [Skill Creation Standards](references/skill-creation-standards.md).
-
-#### Quick Reference
-- **Structure**: SKILL.md (required) + optional bundled resources (scripts/, references/, assets/)
-- **Naming**: `lowercase-hyphenated-names`, max 64 chars, must match directory
-- **Description**: Max 1024 chars with discovery keywords
-- **Progressive Disclosure**: Metadata → SKILL.md (<500 lines) → bundled resources
-- **Content Focus**: High-value, high-density information only
-
-#### Progressive Disclosure Design
-Skills use a three-level loading system:
-1. **Metadata** (name + description) - Always in context (~100 words)
-2. **SKILL.md body** - When skill triggers (<5k words, <500 lines)
-3. **Bundled resources** - As needed (unlimited, scripts execute without context)
-
-#### Degrees of Freedom Framework
-- **High freedom**: Text instructions for flexible, context-dependent tasks
-- **Medium freedom**: Pseudocode/scripts with parameters for configurable patterns  
-- **Low freedom**: Specific scripts for fragile, consistency-critical operations
 
 ### 4. Updating/Merging a Skill
 - Read the existing `SKILL.md`
@@ -130,33 +105,17 @@ See [Skill Creation Standards](references/skill-creation-standards.md#quality-va
 - **Information Density**: Apply epistemic distillation heuristics from [references/distillation-heuristics.md](references/distillation-heuristics.md)
 - **Reference Analysis**: MUST read and analyze all reference files before extraction
 - **Standards Compliance**: Follow structural requirements from [references/skill-creation-standards.md](references/skill-creation-standards.md)
-- **Naming**: `lowercase-hyphenated-names`, max 64 characters, directory match required
-- **Description**: Max 1024 characters with discovery keywords
-- **Paths**: Use relative paths (e.g., `scripts/my-script.py`)
-- **SKILL.md**: Under 500 lines total, include only essential information
 
 ## Bundled Resources Strategy
 
 See [Skill Creation Standards](references/skill-creation-standards.md#bundled-resources-strategy) for detailed resource guidelines.
-
-### Overview
-- **Scripts/**: Executable code for deterministic reliability and repeated execution
-- **References/**: Documentation loaded as needed (APIs, schemas, domain knowledge)
-- **Assets/**: Files used in output (templates, images, boilerplate)
-
-### What NOT to Include
-Do NOT create extraneous documentation files (README.md, INSTALLATION_GUIDE.md, etc.). The skill should contain only essential information that directly supports its functionality.
 
 
 ## Validation Commands
 
 After creating a skill, run validation:
 ```bash
-# Using the local validation script (recommended)
 scripts/validate-skill ./skill-name
-
-# Alternative validation command
-skills-ref validate ./skill-name
 ```
 
 For comprehensive validation procedures and troubleshooting guidance, see [Skill Creation Standards](references/skill-creation-standards.md#validation-commands).
