@@ -98,7 +98,7 @@ validate_skill_content() {
     fi
     
     # Check for progressive disclosure patterns
-    if grep -q "\.md\)" "$skill_file"; then
+    if grep -q "\.md)" "$skill_file"; then
         print_info "Found progressive disclosure patterns (references to .md files)"
     fi
     
@@ -218,7 +218,7 @@ validate_content_density() {
     local warning_count=0
     
     # Check for marketing language indicators (exclude from documentation examples)
-    if echo "$body_content" | grep -vi -E "(example|documentation)" | grep -qi -E "(revolutionary|cutting-edge|state-of-the-art|unprecedented|game-changing)"; then
+    if echo "$body_content" | grep -vi -E "(example|documentation)" | grep -qi -E "(revolutionary|cutting-edge|state\.of\.the\.art|unprecedented|game-changing)"; then
         print_warning "Found potential marketing language in content"
         ((warning_count++))
     fi
