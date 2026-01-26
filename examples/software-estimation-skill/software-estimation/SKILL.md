@@ -1,86 +1,84 @@
 ---
 name: software-estimation
-description: Applies pragmatic software work estimation strategies that account for organizational politics and unknown variables. Use when you need to estimate project timelines and communicate risks to stakeholders.
+description: Applies pragmatic software work estimation strategies that account for organizational politics and unknown variables. Use when you need to estimate project timelines and communicate risks to stakeholders in corporate environments.
 ---
 
-# Software Estimation
-
-Estimates are political tools for managers, not engineering delivery mechanisms. Your job is to find technical approaches that match the expected timeline, not determine how long work will take.
-
 ## When to Use
-- When asked to provide timeline estimates for software projects
-- When planning work with management stakeholders
-- When negotiating project scope vs timeline constraints
+- When asked to provide time estimates for software projects
+- When management pressure influences estimation process
+- When working with poorly-understood systems or large codebases
+- When you need to communicate technical constraints to non-technical stakeholders
 
 ## Core Principles
 
-### Estimates Flow Downward
-- Management already has a timeline in mind (even if unstated)
-- Your job: find technical approaches that fit their timeline
-- Never start by asking "how long will this take"
-- Always ask "what approaches fit in [timeline]"
+**Estimates are political tools, not engineering predictions**
+- Management already has timeline expectations before talking to you
+- Your job is to find approaches that fit their timeline, not predict how long work will take
+- Never provide concrete estimates - always offer risk assessments and options
 
-### Unknown Work Dominates
-- 90% of project time is spent on unknown problems
-- Only known work can be accurately estimated
-- Focus risk assessment on unknown variables, not known tasks
-- More "dark forests" in codebase = higher risk/longer timeline
-
-### Never Give Single Numbers
-- Always return a range of options with different risk profiles
-- Present multiple approaches: conservative, moderate, aggressive
-- Let management choose the risk/reward tradeoff
-- Build trust by being pragmatic, not by always pushing back
+**Unknown work dominates projects (90% of time)**
+- Only well-understood, small-scope work can be accurately estimated
+- Most programming in large systems is research and discovery
+- Focus on identifying "dark forests" in codebase that create uncertainty
 
 ## Estimation Workflow
 
 ### 1. Gather Political Context First
-Before looking at code:
-- How much pressure is on this project?
-- Is this a "must do" or "nice to have"?
-- What timeline is management expecting?
-- Who are the stakeholders and what do they care about?
+- Ask: How much pressure is on this project?
+- Determine: Is this a casual ask or a mandatory deadline?
+- Identify: What timeline is management expecting?
+- Understand: Who are the stakeholders and what do they want?
 
-### 2. Approach with Timeline in Hand
-- Start with the expected timeline, not the technical solution
-- Ask: "What can we build in [timeline]?"
-- Constraint drives technical decisions, not the other way around
+### 2. Start with Target Timeline
+- Begin with the estimate already in hand from management
+- Ask: "Which approaches could be done in one week?" instead of "How long will this take?"
+- Constrain technical solutions to fit timeline expectations
 
-### 3. Assess Unknown Variables
-- Identify all "dark forests" the feature must touch
-- Rate each unknown by scariness/risk level
-- Focus estimate on unknowns, not known implementation
-- More unknowns = need tighter constraints on approach
+### 3. Assess Unknowns vs Knowns
+- Identify all "dark forests" (uncertain areas in codebase)
+- Rate each unknown by risk level and potential time impact
+- Focus more time on unknowns than on known work
 
-### 4. Return Risk Assessment
-Present multiple options:
-- **Option A**: Full implementation (higher risk, longer timeline)
-- **Option B**: Simplified approach (reduced scope, meets timeline)
-- **Option C**: Alternative solution (different risks, different timeline)
+### 4. Return with Options, Not Estimates
+Never say "this is a four-week project". Instead provide:
+- Direct approach with risks (might work, but could blow out to a month)
+- Alternative approaches bypassing risky components
+- Options involving help from other teams
+- Each option with different risk/reward tradeoffs
 
-## Communication Patterns
+## Communication Strategy
 
-### Good: Risk-Based Response
-"I don't think we'll hit one week because X, Y, and Z all need to go perfectly, and at least one will take longer than expected. Here are three approaches..."
+**Use risk-based language:**
+- "I don't think we'll get this done in one week because X, Y, Z would need to all go right"
+- "At least one of those things is bound to take more work than we expect"
 
-### Bad: Concrete Estimate
-"This will take four weeks."
+**Provide multiple paths:**
+- Technical approach with highest risk
+- Simplified approach with moderate risk  
+- Collaborative approach with external dependencies
 
-### Good: Multiple Options
-- We can tackle X, Y, Z directly (might work, could be a month)
-- We can bypass Y and Z (different risks, might hit deadline)
-- We can get help from team familiar with X (we focus on Z only)
+**Build trust through pragmatism:**
+- Occasionally push back when projects are genuinely impossible
+- Don't always say no to pressure - make pragmatic compromises
+- Build credibility so you're believed when something truly can't be done
 
-### Bad: Single Approach
-"We need to build X, Y, and Z properly."
+## When Projects Are Impossible
 
-## Managing Impossible Projects
-- Only claim "impossible" when genuinely technically infeasible
-- Build trust by being pragmatic on other estimates
-- When impossible, management must alter requirements
-- Always pushing back reduces credibility when you need it
+- Signal impossibility only when absolutely necessary
+- Requires pre-built trust with management
+- Provide clear technical reasons why no approach fits timeline
+- Suggest requirement changes rather than just saying "no"
 
-## Notes
-- Estimates are for managerial negotiation, not engineering accuracy
-- Your value is finding workable solutions within constraints
-- The tighter the timeline, the more creative the technical approach must be
+## Common Anti-Patterns to Avoid
+
+- Don't insist on answering all unknown questions before estimating
+- Don't refuse to estimate under uncertainty
+- Don't push back against every management request
+- Don't treat estimation as pure technical exercise
+
+## Team Context Considerations
+
+- Team capability dramatically impacts estimates (10x differences between teams)
+- Some teams cannot deliver work at all regardless of timeline
+- Company expectations often assume estimates are fungible between engineers
+- Consider actual team velocity when assessing feasibility
