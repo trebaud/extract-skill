@@ -32,7 +32,6 @@ Match the level of specificity to the task's fragility and variability:
 
 Think of an AI agent as exploring a path: a narrow bridge with cliffs needs specific guardrails (low freedom), while an open field allows many routes (high freedom).
 
-
 ## Structured Skill Creation Process
 
 ### Step 1: Understanding with Concrete Examples
@@ -57,7 +56,7 @@ Before extracting, understand concrete examples of how the skill will be used:
 
 ### Step 3: Context Comparison (Deduplication)
 
-- List the existing skills in your skills directory (typically, `.opencode/skills/`, `.claude/skills/`, or `~/.claude/skills/`).
+- List the existing skills in your skills directory (typically, `.opencode/skills/`, `.claude/skills/`, or `~/.agents/skills/`).
 - Compare the new capability against existing ones:
     - **Orthogonal**: If the functionality is unrelated to any existing skill, proceed to **Create**.
     - **Overlapping**: If a skill already exists for this domain, proceed to **Update**.
@@ -87,38 +86,11 @@ After creating the skill structure and content, run the validation script:
 scripts/validate-skill ./skill-name
 ```
 
-### 3. Creating a New Skill
-
-For comprehensive standards and best practices on creating new skills, see [Skill Creation Standards](references/skill-creation-standards.md).
-
-### 4. Updating/Merging a Skill
+## Updating/Merging a Skill
 - Read the existing `SKILL.md`
 - Append new instructions or examples to the body
 - Update the `description` if scope expanded significantly
 - Ensure no duplicate frontmatter sections are created
-
-## Quality Standards
-
-See [Skill Creation Standards](references/skill-creation-standards.md#quality-validation) for comprehensive validation criteria.
-
-### Key Requirements
-- **Information Density**: Apply epistemic distillation heuristics from [references/distillation-heuristics.md](references/distillation-heuristics.md)
-- **Reference Analysis**: MUST read and analyze all reference files before extraction
-- **Standards Compliance**: Follow structural requirements from [references/skill-creation-standards.md](references/skill-creation-standards.md)
-
-## Bundled Resources Strategy
-
-See [Skill Creation Standards](references/skill-creation-standards.md#bundled-resources-strategy) for detailed resource guidelines.
-
-
-## Validation Commands
-
-After creating a skill, run validation:
-```bash
-scripts/validate-skill ./skill-name
-```
-
-For comprehensive validation procedures and troubleshooting guidance, see [Skill Creation Standards](references/skill-creation-standards.md#validation-commands).
 
 ## Examples and Edge Cases
 

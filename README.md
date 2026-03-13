@@ -2,6 +2,12 @@
 
 Transforms documentation/blog posts/tutorials into Agent Skills using epistemic distillation to extract only essential patterns. Follows the [Agent Skills specification](https://agentskills.io/specification).
 
+## Install
+
+```bash
+git clone https://github.com/trebaud/extract-skill ~/.agents/skills/extract-skill
+```
+
 ## Use Cases
 - Convert URLs/tutorials into reusable skills
 - Process local files (PDF, MD, TXT, JSON) with workflows

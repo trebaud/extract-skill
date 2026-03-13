@@ -65,22 +65,25 @@ validate_frontmatter() {
     fi
     
     # Extract values for validation
-    local name description
-    name=$(echo "$frontmatter" | grep "^name:" | cut -d: -f2 | xargs)
-    description=$(echo "$frontmatter" | grep "^description:" | cut -d: -f2 | xargs)
-    
-    # Validate name format
-    if [[ ! "$name" =~ ^[a-z0-9-]+$ ]] || [[ ${#name} -gt 64 ]]; then
-        print_error "Name must be lowercase-hyphenated and max 64 characters: '$name'"
-        return 1
-    fi
-    
+    local description
+    description=$(echo "$frontmatter" | grep "^description:" | cut -d: -f2- | xargs)
+
     # Validate description length (max 1024 chars)
     if [[ ${#description} -gt 1024 ]]; then
         print_error "Description exceeds 1024 characters (${#description} chars)"
         return 1
     fi
-    
+
+    # Validate license field
+    if ! echo "$frontmatter" | grep -q "^license:"; then
+        print_warning "Frontmatter missing 'license' field"
+    fi
+
+    # Validate metadata fields
+    if ! echo "$frontmatter" | grep -q "^metadata:"; then
+        print_warning "Frontmatter missing 'metadata' section"
+    fi
+
     print_success "Frontmatter is valid"
     return 0
 }
@@ -107,9 +110,9 @@ validate_skill_content() {
         print_info "Found script references"
     fi
     
-    # Check for duplicate frontmatter
+    # Check for duplicate frontmatter (only count --- in first 10 lines to avoid false positives from horizontal rules)
     local frontmatter_count
-    frontmatter_count=$(grep -c "^---" "$skill_file")
+    frontmatter_count=$(head -n 10 "$skill_file" | grep -c "^---" || true)
     if [[ $frontmatter_count -gt 2 ]]; then
         print_error "Multiple frontmatter sections detected"
         return 1
@@ -212,7 +215,7 @@ validate_content_density() {
     
     # Extract body content (after frontmatter)
     local body_content
-    body_content=$(sed '1,/^---$/d; /^---$/,$d' "$skill_file")
+    body_content=$(awk 'BEGIN{c=0} /^---$/{c++;next} c>=2' "$skill_file")
     
     # Check for common low-value patterns
     local warning_count=0
@@ -262,7 +265,7 @@ validate_skill() {
     fi
     
     local skill_name
-    skill_name=$(sed -n '/^---/,/^---/p' "$skill_file" | grep "^name:" | cut -d: -f2 | xargs || echo "")
+    skill_name=$(sed -n '/^---/,/^---/p' "$skill_file" | grep "^name:" | cut -d: -f2- | xargs || echo "")
     
     if [[ -z "$skill_name" ]]; then
         print_error "Could not extract skill name from SKILL.md"

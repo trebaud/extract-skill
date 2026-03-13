@@ -206,11 +206,7 @@ All content must be:
 ### Required Validation
 All skills must pass validation before completion:
 ```bash
-# Primary validation method
 scripts/validate-skill ./skill-name
-
-# Alternative validation method  
-skills-ref validate ./skill-name
 ```
 
 ### Validation Response Types
@@ -224,8 +220,6 @@ skills-ref validate ./skill-name
 - **Broken References**: Create referenced files or remove invalid links
 - **Permission Issues**: Set execute permissions on scripts using `chmod +x`
 - **Format Violations**: Fix naming conventions, file structure, or content organization
-
-
 
 ## Development Best Practices
 

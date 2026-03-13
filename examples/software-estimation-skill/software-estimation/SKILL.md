@@ -1,7 +1,13 @@
 ---
 name: software-estimation
 description: Applies pragmatic software work estimation strategies that account for organizational politics and unknown variables. Use when you need to estimate project timelines and communicate risks to stakeholders in corporate environments.
+license: Apache-2.0
+metadata:
+  version: 0.0.0
+  author: trebaud
 ---
+
+# Software Estimation
 
 ## When to Use
 - When asked to provide time estimates for software projects

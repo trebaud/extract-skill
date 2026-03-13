@@ -41,7 +41,7 @@ This document defines the heuristics for extracting high-density, actionable kno
 ## Summary of Extraction Workflow
 
 1. **Filter Noise**: Strip marketing, anecdotes, and meta-talk (Shannon).
-2. **Identify Signal**: Locate the core "How" and "Why" (DIKW).
+2. **Identify Signal**: Locate the core "How" and "Why" (Teleological).
 3. **Abstract**: Convert specific instances into universal patterns (Semiotics).
 4. **Compress**: Use the most precise language possible (Grice).
 5. **Verify**: Ensure every extracted line justifies its token cost (Pareto).

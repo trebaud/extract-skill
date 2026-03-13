@@ -1,6 +1,10 @@
 ---
 name: bun-cli-creation
-description: Creates blazingly fast CLI applications using Bun runtime with SQLite, TypeScript support, and yargs for command parsing. Use when you need to build command-line tools with database persistence and modern JavaScript features.
+description: Creates CLI applications using Bun runtime with SQLite, TypeScript support, and yargs for command parsing. Use when you need to build command-line tools with database persistence and modern JavaScript features.
+license: Apache-2.0
+metadata:
+  version: 0.0.0
+  author: trebaud
 ---
 
 # Bun CLI Creation
